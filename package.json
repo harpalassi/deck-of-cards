@@ -1,0 +1,22 @@
+{
+  "name": "deck-of-cards",
+  "version": "1.0.0",
+  "description": "a JS class that represents a deck of cards",
+  "main": "src/DeckOfCards/DeckOfCards.js",
+  "repository": "https://github.com/harpalassi/deck-of-cards",
+  "author": "Harpal Assi",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "jest --watchAll",
+    "start": "babel-node src/DeckOfCards/DeckOfCards.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
+    "babel-jest": "^26.3.0",
+    "jest": "^26.4.0"
+  }
+}
