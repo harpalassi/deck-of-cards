@@ -40,4 +40,15 @@ export class DeckOfCards {
       throw new Error("No cards remaining!");
     }
   }
+  
+  dealAllCards(deck, size) {
+    const dealtCards = [];
+    const deckCopy = [...deck];
+    
+    while (deckCopy.length > 0) {
+      dealtCards.push(deckCopy.splice(0, size));
+    }
+    
+    return dealtCards;
+  }
 }
