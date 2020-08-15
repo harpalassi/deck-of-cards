@@ -8,8 +8,15 @@ describe('Deck Of Cards', () => {
   });
   
   it('deck initializes with 52 cards', () => {
-    const {cards} = deck;
+    let {cards} = deck;
     expect(cards.length).toEqual(52);
   });
+  
+  it('removes single cards from deck', () => {
+    deck.dealACard();
+    deck.dealACard();
+    deck.dealACard();
+    expect(deck.cards.length).toEqual(49);
+  })
   
 });
