@@ -12,6 +12,13 @@ describe('Deck Of Cards', () => {
     expect(cards.length).toEqual(52);
   });
   
+  it('each card has suit and rank properties', () => {
+    deck.cards.forEach((card => {
+    expect(card).toHaveProperty('suit');
+    expect(card).toHaveProperty('rank');
+    }));
+  })
+  
   it('removes single cards from deck', () => {
     deck.dealACard();
     deck.dealACard();
