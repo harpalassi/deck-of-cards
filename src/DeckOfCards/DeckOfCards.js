@@ -58,14 +58,16 @@ export class DeckOfCards {
   /**
    * Allows all cards in a deck to be dealt out
    * @param {[object]} deck
-   * @param {number} numberOfCards - the number of cards per person
-   * @returns {[object]} a new array of cards whose length matches the number of players
+   * @param {number} numberOfPlayers - the number of players for the game
+   * @returns {[object]} an array of equal sets of cards per player - any leftovers are not included
+   *
    **/
-  dealAllCards(deck, numberOfCards) {
+  dealAllCards(deck, numberOfPlayers) {
+    const numberOfCards = Math.floor(52 / numberOfPlayers);
     const dealtCards = [];
     const deckCopy = [...deck];
     
-    while (deckCopy.length > 0) {
+    while (dealtCards.length <= (numberOfPlayers - 1)) {
       dealtCards.push(deckCopy.splice(0, numberOfCards));
     }
     

@@ -18,11 +18,14 @@ describe('Deck Of Cards', () => {
   
   it('shuffles the deck of cards', () => {
     const firstCard = deck[0];
+    const middleCard = deck[25];
     const lastCard = deck[51];
     const shuffledFirstCard = shuffledDeck[0];
+    const shuffledMiddleCard = shuffledDeck[25];
     const shuffledLastCard = shuffledDeck[51];
     
     expect(firstCard).not.toEqual(shuffledFirstCard);
+    expect(middleCard).not.toEqual(shuffledMiddleCard);
     expect(lastCard).not.toEqual(shuffledLastCard);
   });
   
@@ -34,10 +37,9 @@ describe('Deck Of Cards', () => {
     expect(shuffledDeck.length).toEqual(49);
   });
   
-  it('deals all cards into sets of n cards per player', () => {
-    // Deals 13 cards each to 4 players
-    const dealtCards = dealAllCards(shuffledDeck, 13);
-    expect(dealtCards.length).toEqual(4);
+  it('deals all cards into equal sets of cards per player', () => {
+    const dealtCards = dealAllCards(shuffledDeck, 5);
+    expect(dealtCards.length).toEqual(5);
   });
   
 });
