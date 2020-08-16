@@ -6,6 +6,10 @@ export class DeckOfCards {
     this.addCardsToDeck();
   }
   
+  /**
+   * Adds 52 card objects to create a full deck
+   * ex: [{suit: "Hearts", rank: "2"}, {suit: "Spades", rank: "King"}]
+   **/
   addCardsToDeck() {
     for (const suit of suits) {
       for (const rank of ranks) {
@@ -17,8 +21,13 @@ export class DeckOfCards {
     }
   }
   
-  shuffle() {
-    const shuffledDeck = [...this.deck];
+  /**
+   * Takes in a deck and returns a shuffled deck using Fisher-Yates algorithm
+   * @param {[object]} deck - array of cards to be shuffled
+   * @returns {[object]} - a new shuffled array of cards
+   **/
+  shuffle(deck) {
+    const shuffledDeck = [...deck];
     let currentIndex = shuffledDeck.length, tempValue, randomIndex;
     
     while (0 !== currentIndex) {
@@ -33,6 +42,11 @@ export class DeckOfCards {
     return shuffledDeck;
   }
   
+  /**
+   * Takes in a deck (ordered or shuffled) and deals out a single card
+   * @param {[object]} deck
+   * @returns {object} a single card
+   **/
   dealACard(deck) {
     if (deck.length > 0) {
       return deck.pop();
@@ -41,12 +55,18 @@ export class DeckOfCards {
     }
   }
   
-  dealAllCards(deck, size) {
+  /**
+   * Allows all cards in a deck to be dealt out
+   * @param {[object]} deck
+   * @param {number} numberOfCards - the number of cards per person
+   * @returns {[object]} a new array of cards whose length matches the number of players
+   **/
+  dealAllCards(deck, numberOfCards) {
     const dealtCards = [];
     const deckCopy = [...deck];
     
     while (deckCopy.length > 0) {
-      dealtCards.push(deckCopy.splice(0, size));
+      dealtCards.push(deckCopy.splice(0, numberOfCards));
     }
     
     return dealtCards;

@@ -2,8 +2,8 @@ import { DeckOfCards } from '../DeckOfCards';
 
 describe('Deck Of Cards', () => {
   const playingCards = new DeckOfCards();
-  const { deck } = playingCards;
-  const shuffledDeck = playingCards.shuffle();
+  const { deck, dealACard, dealAllCards, shuffle } = playingCards;
+  const shuffledDeck = shuffle(deck);
   
   it('deck initializes with 52 cards', () => {
     expect(deck.length).toEqual(52);
@@ -28,15 +28,15 @@ describe('Deck Of Cards', () => {
   
   it('removes single cards from the deck', () => {
     // Deal 3 cards - 49 left in the deck
-    playingCards.dealACard(shuffledDeck);
-    playingCards.dealACard(shuffledDeck);
-    playingCards.dealACard(shuffledDeck);
+    dealACard(shuffledDeck);
+    dealACard(shuffledDeck);
+    dealACard(shuffledDeck);
     expect(shuffledDeck.length).toEqual(49);
   });
   
   it('deals all cards into sets of n cards per player', () => {
-    // Deals a set of 13 cards to 4 players
-    const dealtCards = playingCards.dealAllCards(shuffledDeck, 13);
+    // Deals 13 cards each to 4 players
+    const dealtCards = dealAllCards(shuffledDeck, 13);
     expect(dealtCards.length).toEqual(4);
   });
   
