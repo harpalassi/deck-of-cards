@@ -1,41 +1,41 @@
+import { suits, ranks } from './CardData';
+
 export class DeckOfCards {
   constructor() {
-    this.cards = [];
+    this.deck = [];
     this.addCardsToDeck();
   }
   
   addCardsToDeck() {
-    const suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
-    const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
-    
     for (const suit of suits) {
       for (const rank of ranks) {
         const card = {};
         card.suit = suit;
         card.rank = rank;
-        this.cards.push(card);
+        this.deck.push(card);
       }
     }
   }
   
-  shuffleCards() {
-    let currentIndex = this.cards.length, tempValue, randomIndex;
+  shuffle() {
+    const shuffledDeck = [...this.deck];
+    let currentIndex = shuffledDeck.length, tempValue, randomIndex;
     
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
       
-      tempValue = this.cards[currentIndex];
-      this.cards[currentIndex] = this.cards[randomIndex];
-      this.cards[randomIndex] = tempValue;
+      tempValue = shuffledDeck[currentIndex];
+      shuffledDeck[currentIndex] = shuffledDeck[randomIndex];
+      shuffledDeck[randomIndex] = tempValue;
     }
     
-    return this.cards;
+    return shuffledDeck;
   }
   
-  dealACard() {
-    if (this.cards.length > 0) {
-      return this.cards.pop();
+  dealACard(deck) {
+    if (deck.length > 0) {
+      return deck.pop();
     } else {
       throw new Error("No cards remaining!");
     }
